@@ -89,9 +89,9 @@ fi
 %{_includedir}/X11/Composite.h
 %{_includedir}/X11/ThreadsI.h
 %{_includedir}/X11/ResourceI.h
-%{_mandir}/man3/Xt*.3*.bz2
+%{_mandir}/man3/Xt*.3*
 %{_mandir}/man3/Menu*
-%{_mandir}/man1/makestrs.1*.bz2
+%{_mandir}/man1/makestrs.1*
 
 #-----------------------------------------------------------
 
