@@ -8,6 +8,7 @@ License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXt-%{version}.tar.bz2
 Patch1: libxt-1.0.2-linking_cplusplus.patch
+BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libsm-devel >= 1.0.0
 BuildRequires: libx11-devel >= 1.0.0
