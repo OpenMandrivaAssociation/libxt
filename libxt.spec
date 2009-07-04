@@ -1,13 +1,12 @@
 %define libxt %mklibname xt 6
 Name: libxt
 Summary:  X Toolkit Library
-Version: 1.0.5
-Release: %mkrel 4
+Version: 1.0.6
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXt-%{version}.tar.bz2
-Patch1: libxt-1.0.2-linking_cplusplus.patch
 BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libsm-devel >= 1.0.0
@@ -16,7 +15,7 @@ BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 
 %description
-X Toolkit Library
+X Toolkit Library.
 
 #-----------------------------------------------------------
 
@@ -27,7 +26,7 @@ Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
 %description -n %{libxt}
-X Toolkit Library
+X Toolkit Library.
 
 #-----------------------------------------------------------
 
@@ -43,7 +42,7 @@ Provides: libxt-devel = %{version}-%{release}
 Conflicts: libxorg-x11-devel < 7.0
 
 %description -n %{libxt}-devel
-Development files for %{name}
+Development files for %{name}.
 
 %pre -n %{libxt}-devel
 if [ -h %{_includedir}/X11 ]; then
@@ -104,7 +103,7 @@ Provides: libxt-static-devel = %{version}-%{release}
 Conflicts: libxorg-x11-static-devel < 7.0
 
 %description -n %{libxt}-static-devel
-Static development files for %{name}
+Static development files for %{name}.
 
 %files -n %{libxt}-static-devel
 %defattr(-,root,root)
@@ -114,7 +113,6 @@ Static development files for %{name}
 
 %prep
 %setup -q -n libXt-%{version}
-%patch1 -p1 -b .cplusplus
 
 %build
 %configure2_5x	--x-includes=%{_includedir}\
@@ -140,5 +138,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/libXt.so.6
 %{_libdir}/libXt.so.6.0.0
-
-
