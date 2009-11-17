@@ -1,8 +1,12 @@
-%define libxt %mklibname xt 6
+%define major 6
+%define libxt %mklibname xt %major
+%define libxt_devel %mklibname xt -d
+%define libxt_static_devel %mklibname xt -d -s
+
 Name: libxt
 Summary:  X Toolkit Library
 Version: 1.0.7
-Release: %mkrel 1
+Release: %mkrel 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -30,7 +34,7 @@ X Toolkit Library.
 
 #-----------------------------------------------------------
 
-%package -n %{libxt}-devel
+%package -n %{libxt_devel}
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: %{libxt} = %{version}
@@ -39,17 +43,18 @@ Requires: libx11-devel >= 1.0.0
 Requires: libsm-devel >= 1.0.0
 Provides: libxt-devel = %{version}-%{release}
 
+Obsoletes: %mklibname xt 6 -d
 Conflicts: libxorg-x11-devel < 7.0
 
-%description -n %{libxt}-devel
+%description -n %{libxt_devel}
 Development files for %{name}.
 
-%pre -n %{libxt}-devel
+%pre -n %{libxt_devel}
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
-%files -n %{libxt}-devel
+%files -n %{libxt_devel}
 %defattr(-,root,root)
 %{_bindir}/makestrs
 %{_libdir}/libXt.so
@@ -94,18 +99,19 @@ fi
 
 #-----------------------------------------------------------
 
-%package -n %{libxt}-static-devel
+%package -n %{libxt_static_devel}
 Summary: Static development files for %{name}
 Group: Development/X11
 Requires: %{libxt}-devel = %{version}
 Provides: libxt-static-devel = %{version}-%{release}
 
+Obsoletes: %mklibname xt 6 -d -s
 Conflicts: libxorg-x11-static-devel < 7.0
 
-%description -n %{libxt}-static-devel
+%description -n %{libxt_static_devel}
 Static development files for %{name}.
 
-%files -n %{libxt}-static-devel
+%files -n %{libxt_static_devel}
 %defattr(-,root,root)
 %{_libdir}/libXt.a
 
