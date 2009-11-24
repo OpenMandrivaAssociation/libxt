@@ -102,7 +102,7 @@ fi
 %package -n %{libxt_static_devel}
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libxt}-devel = %{version}
+Requires: libxt-devel = %{version}
 Provides: libxt-static-devel = %{version}-%{release}
 
 Obsoletes: %mklibname xt 6 -d -s
