@@ -5,8 +5,8 @@
 
 Name: libxt
 Summary:  X Toolkit Library
-Version: 1.0.7
-Release: %mkrel 3
+Version: 1.0.8
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -56,7 +56,6 @@ fi
 
 %files -n %{libxt_devel}
 %defattr(-,root,root)
-%{_bindir}/makestrs
 %{_libdir}/libXt.so
 %{_libdir}/libXt.la
 %{_libdir}/pkgconfig/xt.pc
@@ -95,7 +94,6 @@ fi
 %{_includedir}/X11/ResourceI.h
 %{_mandir}/man3/Xt*.3*
 %{_mandir}/man3/Menu*
-%{_mandir}/man1/makestrs.1*
 
 #-----------------------------------------------------------
 
