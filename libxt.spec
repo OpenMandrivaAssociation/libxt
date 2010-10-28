@@ -5,7 +5,7 @@
 
 Name: libxt
 Summary:  X Toolkit Library
-Version: 1.0.8
+Version: 1.0.9
 Release: %mkrel 1
 Group: Development/X11
 License: MIT
