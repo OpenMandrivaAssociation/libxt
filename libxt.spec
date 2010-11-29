@@ -6,7 +6,7 @@
 Name: libxt
 Summary:  X Toolkit Library
 Version: 1.0.9
-Release: %mkrel 1
+Release: %mkrel 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -26,6 +26,9 @@ X Toolkit Library.
 %package -n %{libxt}
 Summary:  X Toolkit Library
 Group: Development/X11
+Requires: x11-font-daewoo-misc
+Requires: x11-font-isas-misc
+Requires: x11-font-jis-misc
 Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
