@@ -4,9 +4,9 @@
 %define libxt_static_devel %mklibname xt -d -s
 
 Name: libxt
-Summary:  X Toolkit Library
+Summary: X Toolkit Intrinsics library
 Version: 1.0.9
-Release: %mkrel 2
+Release: %mkrel 3
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -19,12 +19,13 @@ BuildRequires: x11-proto-devel >= 1.0.0
 BuildRequires: x11-util-macros >= 1.0.1
 
 %description
-X Toolkit Library.
+X Toolkit Intrinsics library used to build older generation toolkits such
+as Motif & Xaw.
 
 #-----------------------------------------------------------
 
 %package -n %{libxt}
-Summary:  X Toolkit Library
+Summary: X Toolkit Intrinsics library
 Group: Development/X11
 Requires: x11-font-daewoo-misc
 Requires: x11-font-isas-misc
@@ -33,7 +34,8 @@ Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
 %description -n %{libxt}
-X Toolkit Library.
+X Toolkit Intrinsics library used to build older generation toolkits such
+as Motif & Xaw.
 
 #-----------------------------------------------------------
 
