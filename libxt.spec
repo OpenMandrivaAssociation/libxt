@@ -5,8 +5,8 @@
 
 Name: libxt
 Summary: X Toolkit Intrinsics library
-Version: 1.0.9
-Release: %mkrel 3
+Version: 1.1.1
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -145,5 +145,4 @@ rm -rf %{buildroot}
 
 %files -n %{libxt}
 %defattr(-,root,root)
-%{_libdir}/libXt.so.6
-%{_libdir}/libXt.so.6.0.0
+%{_libdir}/libXt.so.%{major}*
