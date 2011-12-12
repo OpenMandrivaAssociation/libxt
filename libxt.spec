@@ -6,12 +6,11 @@
 Name: libxt
 Summary: X Toolkit Intrinsics library
 Version: 1.1.1
-Release: %mkrel 1
+Release: 2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXt-%{version}.tar.bz2
-BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libsm-devel >= 1.0.0
 BuildRequires: libx11-devel >= 1.0.0
@@ -27,9 +26,11 @@ as Motif & Xaw.
 %package -n %{libxt}
 Summary: X Toolkit Intrinsics library
 Group: Development/X11
-Requires: x11-font-daewoo-misc
-Requires: x11-font-isas-misc
-Requires: x11-font-jis-misc
+# wrong place to put these
+# relocated to x11-font-alias
+#Requires: x11-font-daewoo-misc
+#Requires: x11-font-isas-misc
+#Requires: x11-font-jis-misc
 Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}
 
@@ -43,11 +44,6 @@ as Motif & Xaw.
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: %{libxt} = %{version}
-Requires: x11-proto-devel >= 1.0.0
-Requires: libx11-devel >= 1.0.0
-Requires: libsm-devel >= 1.0.0
-Provides: libxt-devel = %{version}-%{release}
-
 Obsoletes: %mklibname xt 6 -d
 Conflicts: libxorg-x11-devel < 7.0
 
@@ -60,7 +56,6 @@ if [ -h %{_includedir}/X11 ]; then
 fi
 
 %files -n %{libxt_devel}
-%defattr(-,root,root)
 %{_libdir}/libXt.so
 %{_libdir}/libXt.la
 %{_libdir}/pkgconfig/xt.pc
@@ -115,7 +110,6 @@ Conflicts: libxorg-x11-static-devel < 7.0
 Static development files for %{name}.
 
 %files -n %{libxt_static_devel}
-%defattr(-,root,root)
 %{_libdir}/libXt.a
 
 #-----------------------------------------------------------
@@ -133,16 +127,6 @@ Static development files for %{name}.
 rm -rf %{buildroot}
 %makeinstall_std
 
-%clean
-rm -rf %{buildroot}
-
-%if %mdkversion < 200900
-%post -p /sbin/ldconfig
-%endif
-%if %mdkversion < 200900
-%postun -p /sbin/ldconfig
-%endif
-
 %files -n %{libxt}
-%defattr(-,root,root)
 %{_libdir}/libXt.so.%{major}*
+
