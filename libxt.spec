@@ -6,7 +6,7 @@
 Name: libxt
 Summary: X Toolkit Intrinsics library
 Version: 1.1.1
-Release: 2
+Release: 3
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -43,7 +43,8 @@ as Motif & Xaw.
 %package -n %{libxt_devel}
 Summary: Development files for %{name}
 Group: Development/X11
-Requires: %{libxt} = %{version}
+Requires: %{libxt} = %{version}-%{release}
+Provides: libxt-devel = %{version}-%{release}
 Obsoletes: %mklibname xt 6 -d
 Conflicts: libxorg-x11-devel < 7.0
 
