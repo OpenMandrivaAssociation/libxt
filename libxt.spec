@@ -1,12 +1,11 @@
 %define major 6
-%define libxt %mklibname xt %major
-%define libxt_devel %mklibname xt -d
-%define libxt_static_devel %mklibname xt -d -s
+%define libxt %mklibname xt %{major}
+%define develname %mklibname xt -d
 
 Name: libxt
 Summary: X Toolkit Intrinsics library
 Version: 1.1.1
-Release: 3
+Release: 4
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -38,27 +37,43 @@ Provides: %{name} = %{version}
 X Toolkit Intrinsics library used to build older generation toolkits such
 as Motif & Xaw.
 
-#-----------------------------------------------------------
-
-%package -n %{libxt_devel}
+%package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
 Requires: %{libxt} = %{version}-%{release}
 Provides: libxt-devel = %{version}-%{release}
-Obsoletes: %mklibname xt 6 -d
+Obsoletes: %{_lib}xt6-devel
+Obsoletes: %{_lib}xt-static-devel
 Conflicts: libxorg-x11-devel < 7.0
 
-%description -n %{libxt_devel}
+%description -n %{develname}
 Development files for %{name}.
 
-%pre -n %{libxt_devel}
+%prep
+%setup -qn libXt-%{version}
+
+%build
+%configure2_5x \
+	--disable-static \
+	--x-includes=%{_includedir} \
+	--x-libraries=%{_libdir}
+
+%make
+
+%install
+rm -rf %{buildroot}
+%makeinstall_std
+
+%pre -n %{develname}
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
-%files -n %{libxt_devel}
+%files -n %{libxt}
+%{_libdir}/libXt.so.%{major}*
+
+%files -n %{develname}
 %{_libdir}/libXt.so
-%{_libdir}/libXt.la
 %{_libdir}/pkgconfig/xt.pc
 %{_includedir}/X11/Core.h
 %{_includedir}/X11/VarargsI.h
@@ -95,39 +110,4 @@ fi
 %{_includedir}/X11/ResourceI.h
 %{_mandir}/man3/Xt*.3*
 %{_mandir}/man3/Menu*
-
-#-----------------------------------------------------------
-
-%package -n %{libxt_static_devel}
-Summary: Static development files for %{name}
-Group: Development/X11
-Requires: libxt-devel = %{version}
-Provides: libxt-static-devel = %{version}-%{release}
-
-Obsoletes: %mklibname xt 6 -d -s
-Conflicts: libxorg-x11-static-devel < 7.0
-
-%description -n %{libxt_static_devel}
-Static development files for %{name}.
-
-%files -n %{libxt_static_devel}
-%{_libdir}/libXt.a
-
-#-----------------------------------------------------------
-
-%prep
-%setup -q -n libXt-%{version}
-
-%build
-%configure2_5x	--x-includes=%{_includedir}\
-		--x-libraries=%{_libdir}
-
-%make
-
-%install
-rm -rf %{buildroot}
-%makeinstall_std
-
-%files -n %{libxt}
-%{_libdir}/libXt.so.%{major}*
 
