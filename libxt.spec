@@ -4,8 +4,8 @@
 
 Name:		libxt
 Summary:	X Toolkit Intrinsics library
-Version:	1.1.3
-Release:	2
+Version:	1.1.4
+Release:	1
 Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
@@ -21,7 +21,6 @@ BuildRequires:	x11-util-macros >= 1.0.1
 X Toolkit Intrinsics library used to build older generation toolkits such
 as Motif & Xaw.
 
-#-----------------------------------------------------------
 
 %package -n %{libxt}
 Summary:	X Toolkit Intrinsics library
@@ -63,7 +62,6 @@ Development files for %{name}.
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %files -n %{libxt}
