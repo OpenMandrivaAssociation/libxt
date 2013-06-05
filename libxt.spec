@@ -10,7 +10,6 @@ Group:		Development/X11
 License:	MIT
 URL:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXt-%{version}.tar.bz2
-Patch0:		libxt-aarch64.patch
 
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
