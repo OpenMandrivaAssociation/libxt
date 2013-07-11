@@ -1,6 +1,6 @@
 %define major 6
-%define libxt %mklibname xt %{major}
-%define develname %mklibname xt -d
+%define libname %mklibname xt %{major}
+%define devname %mklibname xt -d
 
 Summary:	X Toolkit Intrinsics library
 Name:		libxt
@@ -12,30 +12,28 @@ Url:		http://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXt-%{version}.tar.bz2
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
-BuildRequires:	x11-proto-devel >= 1.0.0
-BuildRequires:	x11-util-macros >= 1.0.1
+BuildRequires:	pkgconfig(xproto)
+BuildRequires:	pkgconfig(xorg-macros)
 
 %description
 X Toolkit Intrinsics library used to build older generation toolkits such
 as Motif & Xaw.
 
-%package -n %{libxt}
+%package -n %{libname}
 Summary:	X Toolkit Intrinsics library
 Group:		Development/X11
 
-%description -n %{libxt}
+%description -n %{libname}
 X Toolkit Intrinsics library used to build older generation toolkits such
 as Motif & Xaw.
 
-%package -n %{develname}
+%package -n %{devname}
 Summary:	Development files for %{name}
 Group:		Development/X11
-Requires:	%{libxt} = %{version}-%{release}
+Requires:	%{libname} = %{version}-%{release}
 Provides:	libxt-devel = %{version}-%{release}
-Obsoletes:	%{_lib}xt6-devel < 1.1.3
-Obsoletes:	%{_lib}xt-static-devel < 1.1.3
 
-%description -n %{develname}
+%description -n %{devname}
 Development files for %{name}.
 
 %prep
@@ -52,10 +50,10 @@ Development files for %{name}.
 %install
 %makeinstall_std
 
-%files -n %{libxt}
+%files -n %{libname}
 %{_libdir}/libXt.so.%{major}*
 
-%files -n %{develname}
+%files -n %{devname}
 %{_libdir}/libXt.so
 %{_libdir}/pkgconfig/xt.pc
 %{_includedir}/X11/Core.h
