@@ -4,8 +4,8 @@
 
 Summary:	X Toolkit Intrinsics library
 Name:		libxt
-Version:	1.1.4
-Release:	9
+Version:	1.1.5
+Release:	1
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
@@ -40,7 +40,7 @@ Development files for %{name}.
 %setup -qn libXt-%{version}
 
 %build
-%configure2_5x \
+%configure \
 	--disable-static \
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
