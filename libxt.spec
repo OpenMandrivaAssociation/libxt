@@ -37,7 +37,7 @@ Provides:	libxt-devel = %{version}-%{release}
 Development files for %{name}.
 
 %prep
-%setup -qn libXt-%{version}
+%autosetup -n libXt-%{version} -p1
 
 %build
 %configure \
@@ -45,10 +45,10 @@ Development files for %{name}.
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
 
-%make
+%make_build
 
 %install
-%makeinstall_std
+%make_install
 
 %files -n %{libname}
 %{_libdir}/libXt.so.%{major}*
@@ -92,4 +92,3 @@ Development files for %{name}.
 %{_mandir}/man3/Xt*.3*
 %{_mandir}/man3/Menu*
 %{_docdir}/libXt/*
-
