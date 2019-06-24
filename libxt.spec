@@ -6,7 +6,7 @@
 
 Summary:	X Toolkit Intrinsics library
 Name:		libxt
-Version:	1.1.5
+Version:	1.2.0
 Release:	7
 License:	MIT
 Group:		Development/X11
