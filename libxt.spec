@@ -2,10 +2,12 @@
 %define libname %mklibname xt %{major}
 %define devname %mklibname xt -d
 
+%global optflags %{optflags} -O3
+
 Summary:	X Toolkit Intrinsics library
 Name:		libxt
-Version:	1.1.5
-Release:	6
+Version:	1.2.0
+Release:	7
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
