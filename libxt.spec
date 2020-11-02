@@ -32,6 +32,7 @@ BuildRequires:	pkgconfig(xorg-macros)
 BuildRequires:	devel(libSM)
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libICE)
+BuildRequires:	devel(libxcb)
 %endif
 
 %description
