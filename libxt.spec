@@ -34,7 +34,7 @@ BuildRequires:	devel(libX11)
 BuildRequires:	devel(libICE)
 BuildRequires:	devel(libxcb)
 BuildRequires:	devel(libXau)
-BuildRequires:	devel(libXdmpc)
+BuildRequires:	devel(libXdmcp)
 %endif
 
 %description
