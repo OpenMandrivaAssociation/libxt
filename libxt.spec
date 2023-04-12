@@ -18,17 +18,19 @@
 
 Summary:	X Toolkit Intrinsics library
 Name:		libxt
-Version:	1.2.1
-Release:	2
+Version:	1.3.0
+Release:	1
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXt-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXt-%{version}.tar.xz
 BuildRequires:	pkgconfig(sm)
 BuildRequires:	pkgconfig(x11)
 BuildRequires:	pkgconfig(xproto)
 BuildRequires:	pkgconfig(xorg-macros)
 %if %{with compat32}
+BuildRequires:	libc6
+BuildRequires:	devel(libuuid)
 BuildRequires:	devel(libSM)
 BuildRequires:	devel(libX11)
 BuildRequires:	devel(libICE)
@@ -78,7 +80,7 @@ Development files for %{name}.
 
 %prep
 %autosetup -n libXt-%{version} -p1
-export CONFIGURE_TOP="`pwd`"
+export CONFIGURE_TOP="$(pwd)"
 %if %{with compat32}
 mkdir build32
 cd build32
@@ -140,9 +142,9 @@ cd build
 %{_includedir}/X11/Composite.h
 %{_includedir}/X11/ThreadsI.h
 %{_includedir}/X11/ResourceI.h
-%{_mandir}/man3/Xt*.3*
-%{_mandir}/man3/Menu*
-%{_docdir}/libXt/*
+%doc %{_mandir}/man3/Xt*.3*
+%doc %{_mandir}/man3/Menu*
+%doc %{_docdir}/libXt/*
 
 %if %{with compat32}
 %files -n %{lib32name}
